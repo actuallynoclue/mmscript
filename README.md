@@ -1,1 +1,1 @@
-# mmscript
+# MMS Campaign script
