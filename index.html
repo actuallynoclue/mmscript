@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Outbound Call Flow – America’s Health MMS</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#0e1628;--card:#1b2538;--line:#2b3750;--tx:#e6ecf7;--mu:#8b97ad;--blue:#4c8dff;--cyan:#22c7d6;--pur:#a06bff;--grn:#2ed3a0;--red:#ff4d6d;--amb:#ffb020}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:24px 16px}
+.w{max-width:860px;margin:0 auto}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:18px}
+h1{margin:0;font-size:28px}.sub{color:var(--mu);font-size:14px}
+.pill{border:1px solid var(--grn);color:var(--grn);background:#12352f;border-radius:99px;padding:5px 14px;font-size:12px;font-weight:700}
+.card{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:10px;padding:16px 18px;margin-bottom:14px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c);background:#ffffff0f;border:1px solid var(--c);border-radius:4px;padding:2px 8px;margin-bottom:8px}
+.top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.warn{color:var(--red);font-size:20px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;background:#ff4d6d1f;border:2px solid var(--red);border-radius:8px;padding:6px 14px}.must{color:var(--red);font-size:12px;font-weight:700}
+.v{background:#2a5aa433;border:1px solid #3b6bb5;border-radius:4px;padding:0 6px;font-family:ui-monospace,Menlo,monospace;font-size:13px;color:#a9c8ff}
+.ph{background:#ffb02022;border:1px dashed var(--amb);border-radius:4px;padding:0 6px;color:var(--amb);font-size:13px}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin-top:12px}
+.o{border-radius:8px;padding:10px 12px;font-size:14px;border:1px solid}
+.o b{display:block;font-size:12px;margin-bottom:4px}
+.y{background:#12352f;border-color:#1f6e58;color:#b6f2de}.y b{color:var(--grn)}
+.n{background:#3a1b2b;border-color:#7a2b45;color:#ffc4d0}.n b{color:var(--red)}
+.d{background:#3a2d15;border-color:#7a5a1a;color:#ffe2a8}.d b{color:var(--amb)}
+.plans{margin-bottom:14px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px}
+.plans h4{margin:0 0 8px;font-size:12px;color:#8f9bff;letter-spacing:.05em}
+.plans span{display:inline-block;border:1px solid var(--line);border-radius:6px;padding:2px 10px;margin:0 6px 6px 0;font-size:13px;color:#c5cee0}
+/* rebuttals */
+.rb{border:1px solid var(--line);border-radius:12px;background:#121c31;margin-bottom:14px;overflow:hidden}
+.rbh{width:100%;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,#2a1d4d,#1b2538);color:var(--tx);border:0;padding:16px 18px;font:inherit;font-size:17px;font-weight:700;cursor:pointer;text-align:left}
+.rbh small{color:var(--mu);font-weight:400;font-size:13px;margin-left:8px}
+.arr{transition:transform .2s;color:var(--pur)}.open .arr{transform:rotate(180deg)}
+.rbb{display:none;padding:16px 18px}.open .rbb{display:block}
+.bar{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:10px;margin-bottom:12px}
+.bar button{flex:none;background:var(--card);color:#c5cee0;border:1px solid var(--line);border-radius:99px;padding:7px 14px;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.bar button:hover{border-color:var(--pur)}
+.bar button.on{background:var(--pur);border-color:var(--pur);color:#150b2e}
+.rp{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--pur);border-radius:10px;padding:16px 18px}
+.rp h3{margin:0 0 8px;font-size:13px;letter-spacing:.06em;color:var(--pur)}
+.rp p{margin:0 0 10px}
+.rb-act{color:#ff859b;font-weight:700;background:rgba(255,77,109,0.15);padding:2px 6px;border-radius:4px;border:1px solid rgba(255,77,109,0.3)}
+.note{color:var(--mu);font-size:13px;margin:6px 0 14px}
+footer{display:flex;justify-content:space-between;color:var(--mu);font-size:12px;border-top:1px solid var(--line);padding-top:12px;margin-top:20px}
+.script-opener {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 6px 0 10px 0;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
+}
+</style></head><body><div class="w">
+<header><div><h1>Outbound Call Flow</h1><div class="sub">America’s Health • Medicaid Meal Service (MMS)</div></div><span class="pill">● RECORDED LINE ACTIVE</span></header>
+
+<div class="card" style="--c:var(--blue)">
+<div class="top"><span class="tag">Step 1 • Opening &amp; Qualification</span><span class="must">RECORDED LINE MANDATORY</span></div>
+
+<!-- First header line -->
+<div class="script-opener">“Hey, good morning <span class="v">CUSTOMER NAME</span>?”</div>
+
+<!-- Original paragraph restored completely with its original opening -->
+<p>“Hey, good morning <span class="v">CUSTOMER NAME</span>, This is <span class="v">AGENT NAME</span> with America's Health on a recorded line. We were just giving you a quick call today about the Medicaid meal service for you and your family. I just need to confirm you ARE still receiving Medicaid, correct?”</p>
+<div class="g3">
+<div class="o y"><b>✓ YES</b>Continue directly to Step 2.</div>
+<div class="o n">
+  <b>✗ NO</b> “Oh, there must have been a mistake, thank you for your time, have a great day!”<br><br>
+  <div style="text-align: center;">
+    <span style="
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 6px;
+      background-color: rgba(180, 50, 50, 0.15);
+      color: #e57373;
+      border: 1px solid rgba(229, 115, 115, 0.4);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.4px;
+    ">
+        END &amp; CODE AS DQ
+    </span>
+  </div>
+</div>
+<div class="o d">
+  <b>? DON'T KNOW</b> “Okay, let me ask you this: When you go to the doctor, do you have to pay anything, or is it usually free?”<br><br>
+  
+  <div style="text-align: center; display: flex; flex-direction: column; gap: 8px;">
+    <!-- Pass Badge -->
+    <div>
+      <span style="
+        display: inline-block;
+        padding: 5px 14px;
+        border-radius: 6px;
+        background-color: rgba(50, 160, 110, 0.15);
+        color: #81c784;
+        border: 1px solid rgba(129, 199, 132, 0.4);
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 0.4px;
+      ">
+        YES IT'S FREE/FROM THE STATE: CONTINUE
+      </span>
+    </div>
+
+    <!-- DQ Badge -->
+    <div>
+      <span style="
+        display: inline-block;
+        padding: 5px 14px;
+        border-radius: 6px;
+        background-color: rgba(180, 50, 50, 0.15);
+        color: #e57373;
+        border: 1px solid rgba(229, 115, 115, 0.4);
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 0.4px;
+      ">
+        COPAYS: END &amp; CODE AS DQ
+      </span>
+    </div>
+  </div>
+</div>
+</div></div>
+
+<div class="plans"><h4>QUALIFYING HEALTH PLANS (CONTINUE IF CUSTOMER MENTIONS ANY):</h4>
+<span>Healthfirst</span><span>Fidelis</span><span>MetroPlus</span><span>Emblem</span><span>VNS</span><span>Molina</span><span>UHC Community</span><span>Anthem HealthPlus</span><span>Aetna Better Health</span><span>Amida Care</span></div>
+
+<div class="rb" id="rb">
+<button class="rbh" id="rbh" aria-expanded="false"><span>REBUTTALS<small>Tap to show • 8 responses</small></span><span class="arr">▼</span></button>
+<div class="rbb">
+<div class="bar" id="bar"></div>
+<div class="rp" id="rp"></div>
+</div></div>
+
+<div class="card" style="--c:var(--cyan)">
+<span class="tag">Step 2 • Location Verification</span>
+<p>“Okay perfect, and you're still in <span class="v">CUSTOMER'S BOROUGH</span>, with the zip code <span class="v">CUSTOMER ZIP CODE</span> correct?”</p></div>
+
+<div class="card" style="--c:var(--pur)">
+<div class="top"><span class="tag">Step 3 • Final Re-Confirmation</span><span class="warn">MUST GET PERMISSION TO TRANSFER</span></div>
+<p>“Okay LAST question here, JUST to double confirm: you ARE receiving Medicaid and you ARE still in <span class="v">CUSTOMER'S BOROUGH</span>, correct?”</p>
+<p>“Perfect, that's everything I need. The screener is coming on the line now to help you set that up. Once that's finished, they'll have you on your way, okay?”</p></div>
+
+<div class="card" style="--c:var(--grn)">
+<span class="tag">Step 4 • Warm Handoff Script</span>
+<p>“Hey agent, I have <span class="v">CUSTOMER'S NAME</span> in <span class="v">CUSTOMER'S BOROUGH</span>, the zip code for them is <span class="v">CUSTOMER ZIP</span>. Can you take the call from here?... Okay, I'll drop the line and let you two finish up. You both have a great day!”</p></div>
+
+<footer><span>America’s Health Internal Scripting</span><span>Page 1 of 1</span></footer>
+</div>
+<script>
+const R=[
+["Not interested","“I understand, but groceries are NOT getting any cheaper. You are ALREADY approved for up to three meals at NO cost and this is INCLUDED in your medicaid. I just need to confirm.....<span class='rb-act'>(GO RIGHT BACK WHERE YOU WERE, DON'T STOP OR PAUSE)</span>”"],
+["I’m busy / call back","“Oh let me assure you this will be SUPER brief, I just have 3 SUPER quick questions and i'll bring the screener on. I just need to confirm... <span class='rb-act'>(GO RIGHT BACK WHERE YOU WERE, DON'T STOP OR PAUSE)</span>”"],
+["I already have it","“Yes of course, we were just calling about the EXTRA support, this isn't a replacement. There's actually been some NEW varieties that JUST released so MORE food coming in, we just need to activate it. I just need to confirm...<span class='rb-act'>(GO RIGHT BACK WHERE YOU WERE, DON'T STOP OR PAUSE)</span>”"],
+["I don’t need it","“I understand, but with groceries and the cost of living going up, having three meals delivered at NO cost can take a little pressure off your grocery budget. And if you don't personally need them, you could ALWAYS give them to someone in your family or someone who could use the help. You're already approved for it, so there's nothing extra you're paying for. I just need to confirm...<span class='rb-act'>(GO RIGHT BACK WHERE YOU WERE, DON'T STOP OR PAUSE)</span>”"],
+["I don’t like the meals","“I understand, but there's actually some new varieties that JUST became available. From healthier options to hot, cold and frozen. Just let the screener know when we get there. I just need to confirm...<span class='rb-act'>(GO RIGHT BACK WHERE YOU WERE, DON'T STOP OR PAUSE)</span>”"],
+["How much is this going to cost me?","“Oh this is ALREADY included in your medicaid. There is NO cost to you and there is NO change to your coverage. You're ALREADY preapproved for up to 3 meals a day, delivered to your doorstep, I just need to activate it. I just need to confirm...<span class='rb-act'>(GO RIGHT BACK WHERE YOU WERE, DON'T STOP OR PAUSE)</span>”"],
+["What is this / why are you calling me?","“This is a meal delivery benefit included in your Medicaid. It provides up to 3 meals daily at no cost, and no change to coverage. I just need to confirm...<span class='rb-act'>(GO RIGHT BACK WHERE YOU WERE, DON'T STOP OR PAUSE)</span>”"],
+["Who are you with?","“Oh i'm with America's health. We work with over 25 different health insurance providers. We're just here to facilitate your free review. I just need to confirm... <span class='rb-act'>(GO RIGHT BACK WHERE YOU WERE, DON'T STOP OR PAUSE)</span>”"]
+];
+const bar=document.getElementById('bar'),rp=document.getElementById('rp'),rb=document.getElementById('rb'),h=document.getElementById('rbh');
+function show(i){[...bar.children].forEach((b,j)=>b.classList.toggle('on',i===j));const r=R[i];
+rp.innerHTML="<h3>"+r[0].toUpperCase()+"</h3><p>"+r[1]+"</p>";}
+R.forEach((r,i)=>{const b=document.createElement('button');b.textContent=r[0];b.onclick=()=>show(i);bar.appendChild(b)});
+show(0);
+h.onclick=()=>{const o=rb.classList.toggle('open');h.setAttribute('aria-expanded',o);h.querySelector('small').textContent=o?'Tap to hide':'Tap to show • 8 responses'};
+</script></body></html>
